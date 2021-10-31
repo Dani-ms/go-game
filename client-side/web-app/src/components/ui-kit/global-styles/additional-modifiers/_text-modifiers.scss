@@ -1,0 +1,25 @@
+.text-link {
+  color: $link-color;
+  text-decoration: $link-decoration;
+  cursor: pointer;
+
+  @include hover-focus() {
+    color: $link-hover-color;
+    text-decoration: $link-hover-decoration;
+  }
+}
+
+@each $color, $value in $theme-colors {
+  .text-link.text-#{$color} {
+    &:hover {
+      color: get-contrasting-color('#{$color}-hover') !important;
+    }
+    &:focus {
+      color: get-contrasting-color('#{$color}-hover') !important;
+    }
+  }
+}
+
+.text-highlight {
+  text-decoration: underline !important;
+}

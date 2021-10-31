@@ -1,0 +1,176 @@
+@import 'src/components/ui-kit/global-styles/variables';
+
+$headings-margin-bottom: $spacer;
+$headings-font-weight: 700;
+
+$h1-font-size: $font-size-base * 2.5;
+$h2-font-size: $font-size-base * 2;
+$h3-font-size: $font-size-base * 1.75;
+$h4-font-size: $font-size-base * 1.5;
+
+$display1-size: $h1-font-size;
+$display2-size: $h2-font-size;
+$display3-size: $h3-font-size;
+$display4-size: $h4-font-size;
+
+$stripe-width-lg: 0.5rem;
+
+$hr-border-width: 1px;
+$hr-border-color: set-contrasting-color-alpha('body', 0.3);
+
+$spinner-width-lg: 3rem;
+$spinner-height-lg: 3rem;
+$spinner-border-width-lg: 0.3em;
+
+$navbar-bg: $body-bg;
+$navbar-bg-inverted: $body-bg-inverted;
+
+$navbar-dark-toggler-icon: none;
+
+$navbar-dark-toggler-icon-bg: $navbar-dark-toggler-icon;
+$navbar-light-toggler-icon-bg: $navbar-dark-toggler-icon;
+
+$navbar-dark-toggler-border-color: $border-color;
+$navbar-light-toggler-border-color: $border-color;
+
+$navbar-dark-color: get-contrasting-color('body');
+$navbar-light-color: get-contrasting-color('body');
+
+@import 'node_modules/bootstrap/scss/bootstrap';
+
+@import 'src/components/ui-kit/global-styles/additional-mixins/contrasting-colors-mixins';
+@import 'src/components/ui-kit/global-styles/additional-mixins/inverted-color-scheme-mixins';
+
+@import 'src/components/ui-kit/global-styles/root';
+
+@import 'src/components/ui-kit/global-styles/reboot';
+@import 'src/components/ui-kit/global-styles/type';
+@import 'src/components/ui-kit/global-styles/grid';
+@import 'src/components/ui-kit/global-styles/buttons';
+@import 'src/components/ui-kit/global-styles/card';
+@import 'src/components/ui-kit/global-styles/nav';
+@import 'src/components/ui-kit/global-styles/navbar';
+@import 'src/components/ui-kit/global-styles/progress';
+@import 'src/components/ui-kit/global-styles/utilities/background';
+@import 'src/components/ui-kit/global-styles/utilities/text';
+
+@import 'src/components/ui-kit/global-styles/additional-components/animation';
+@import 'src/components/ui-kit/global-styles/additional-components/icon';
+
+@import 'src/components/ui-kit/global-styles/additional-modifiers/text-modifiers';
+@import 'src/components/ui-kit/global-styles/additional-modifiers/card-modifiers';
+@import 'src/components/ui-kit/global-styles/additional-modifiers/spinners-modifiers';
+@import 'src/components/ui-kit/global-styles/additional-modifiers/navbar-modifiers';
+@import 'src/components/ui-kit/global-styles/additional-modifiers/selectable-modifiers';
+
+@import 'src/components/ui-kit/global-styles/additional-utilities/background-utilities';
+@import 'src/components/ui-kit/global-styles/additional-utilities/text-utilities';
+@import 'src/components/ui-kit/global-styles/additional-utilities/link-utilities';
+@import 'src/components/ui-kit/global-styles/additional-utilities/shadows-utilities';
+@import 'src/components/ui-kit/global-styles/additional-utilities/text-shadows-utilities';
+@import 'src/components/ui-kit/global-styles/additional-utilities/stripes-utilities';
+@import 'src/components/ui-kit/global-styles/additional-utilities/user-select-utilities';
+@import 'src/components/ui-kit/global-styles/additional-utilities/opacity-utilities';
+@import 'src/components/ui-kit/global-styles/additional-utilities/z-index-utilities';
+@import 'src/components/ui-kit/global-styles/additional-utilities/overflow-utilities';
+@import 'src/components/ui-kit/global-styles/additional-utilities/size-utilities';
+
+
+.game-page {
+    top: 50%;
+    left: 50%;
+  }
+  .game-container {
+    // width:603px;
+    // height:600px;
+    // border:solid 3px
+    text-align: center;
+  }
+  
+  .title {
+    text-align: center;
+    font-size: 3rem;
+    color: #555;
+    margin-bottom: 2rem;
+  }
+  
+  .board-container {
+    display: grid;
+    grid-template-columns: repeat(3, 240px);
+    grid-template-rows: repeat(3, 200px);
+    gap: 1rem;
+    background-color: rgba(226, 222, 222, 0.603);
+  }
+  
+  .board-container.game-over {
+    opacity: 0.8;
+  }
+  
+  .cell {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    background-color: $white;
+    border-radius: 5px;
+    font-size: 3rem;
+    font-weight: bold;
+    color: $black;
+    cursor: pointer;
+    background-color: white;
+    &.X {
+      background-color: $secondary;
+    }
+    &.O {
+      background-color: $primary;
+    }
+    &:not(.O):not(.X):hover {
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+        0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+  }
+  .cell:not(.O):not(.X):hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+      0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+  
+  .cell.O,
+  .cell.X,
+  .game-over .cell {
+    cursor: not-allowed;
+  }
+  
+  .cell .O,
+  .cell .X,
+  .game-over .cell {
+    cursor: not-allowed;
+  }
+  
+  footer {
+    text-align: center;
+  }
+  
+  .winner-message {
+    margin: 2rem;
+  }
+  
+  .winner-message span.O {
+    color: $primary;
+  }
+  
+  .winner-message span.X {
+    color: $secondary;
+  }
+  
+  .winner-message span.E {
+    color: $success;
+  }
+  
+  button {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    background-color: $green;
+    color: $white;
+    font-size: 1.2rem;
+  }
