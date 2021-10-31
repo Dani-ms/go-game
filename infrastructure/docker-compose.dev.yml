@@ -1,0 +1,19 @@
+version: '3.7'
+
+services:
+  postgres_estirador:
+    image: postgres
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - 5432:5432
+  postgres_test_estirador:
+    image: postgres
+    environment:
+      - POSTGRES_DB=postgres_test
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - 5433:5432
