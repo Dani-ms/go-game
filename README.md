@@ -1,44 +1,3 @@
-## Setting up a new project
-
-- Clone this repository and rename the newly created directory with the name of your project
-- Point the terminal to the root directory of this new project
-- Run `git remote remove origin` to remove any unnecessary branches that came with the boilerplate repository and detach the new project from said repository
-- Run `git remote add origin <project repository url>` to start pushing changes to your new project's repository
-- Remove the `CONTRIBUTING.md` and `LICENSE` files, and also change the `license` field in `package.json`
-- **Make sure you're using the recommended NodeJS version**
-  - There's an `.nvmrc` file in the root of the project, so you can call `nvm use` in the terminal.
-  - If you want `nvm` to switch to the recommended version automatically when switching directories, [follow `nvm`'s instructions here](https://github.com/nvm-sh/nvm#deeper-shell-integration)
-- Run `npm run install:all`
-- (Optional) hook the `precommit` script in `package.json` to your Git pre-commit hook
-- Write down the project name and other details in `libs/shared/src/project-details.ts`
-- Change the names of the services in `infrastructure/docker-compose.yml` and `infrastructure/docker-compose.dev.yml`, so you don't end up using your other projects services that have the same name when you are using this project's _docker-compose_
-  - Example: rename `postgres_estirador` to `postgres_my_project`
-- Start the project's infrastructure by running `docker-compose -f infrastructure/docker-compose.yml -f infrastructure/docker-compose.dev.yml up`
-- Generate the first database migration by running `NODE_ENV=development npm run typeorm migration:generate -- -- -n FirstMigration --pretty`
-- Import and place the newly generated migration in the `ALL_MIGRATIONS` array at `src/internals/databases/all-migrations.ts`, like this:
-
-  ```typescript
-  import { FirstMigration1625260282582 } from './migrations/1625260282582-FirstMigration';
-
-  export const ALL_MIGRATIONS = [FirstMigration1625260282582];
-  ```
-
-- **Done**
-
-## Updating the project's boilerplate
-
-To update the project's boilerplate, just run `update-project-boilerplate.sh` and input the _Git_ repository URL of the boilerplate your project is based on. In this case `https://github.com/Bartmr/estirador.git`
-
-You can also use `force-update-project-boilerplate.sh` if you want previously rejected updates to appear again: this script will merge all the content from the boilerplate into the project without considering the _git_ commit history.
-
-## How to extend Estirador and create a similar updatable boilerplate for my company?
-
-- Just create a new repository following the instructions above on how to setup a new project, and do the changes you need to accommodate your company's requirements. That's it. It is now your company's own _Estirador_. Now when you create a project from it, remember to input your company's boilerplate _git_ repository URL instead of the official _Estirador_ URL. Also remember to keep your company's own boilerplate updated with _Estirador_'s by running the same update script in your company's boilerplate, but targeted to _Estirador_'s repository URL.
-
-- _Advanced_: you can always start a new updatable boilerplate from scratch (and I mean from scratch: no actual code) and have it for anything that is commitable to _Git_: from a server boilerplate in _Go_ to your own _Jupyter_ notebook environment that has a specific structure. What gives the boilerplate it's "updatable" properties is the `./update-project-boilerplate.sh` file. The rest of this project is most of my expertise, solutions and foresight for creating scalable full-stack projects in no time.
-
-> Estirador exists to introduce companies to a more stable and predictable methodology of reusing and storing code, not as a framework or package with a fixed set of rules
-
 ## Development
 
 ### Start development environment
@@ -112,7 +71,7 @@ tunnels:
 
 ### When developing
 
-- Read about **validations** here: <https://github.com/Bartmr/not-me>
+- Read about **validations** here: 
 - **Avoid configurations that are tied to the build type** (example: values and configurations that use `NODE_ENV`).
 - **Do not access environment variables directly** (the linter will problably stop you from doing that). Use the `EnvironmentVariablesService` to access these variables. This service is responsible for parsing and validating all environment variables that are used.
 - **Always use custom repositories** In order to **enforce the use of the custom logic implemented in each repository** _(like auditing rows changes when extending `AuditedEntityRepository`)_ and to make sure that **entities have all their required fields filled**, always use custom repositories, by calling `(connection or manager).getCustomRepository(CustomRepositoryClass)`.
@@ -148,4 +107,4 @@ tunnels:
 
 ## Related projects
 
-- Not-Me: <https://github.com/Bartmr/not-me>
+
