@@ -21,11 +21,11 @@ export const IndexTemplate = (props: Props, state: State) => (
       const handleCellClick = (index: number) => {
         //verifca se o card não tem item, se e diferente de elemento vazio e para no momento
         if (result) {
-          //console.log('Jogo Finalizado');
+          console.log('Jogo Finalizado');
           return;
         }
         if (board[index] === '') {
-          //console.log('Posição ocupada');
+          console.log('Posição ocupada');
           return;
         }
         setBoard(
@@ -54,16 +54,17 @@ export const IndexTemplate = (props: Props, state: State) => (
         ];
 
         possibleWaysToWin.forEach((items) => {
-          if (items.every((cell) => cell === 'O')) setResult(null); //setResult("O")
-
-          if (items.every((cell) => cell === 'X')) setResult(null); //setResult("X")
+          if (items.every((cell) => cell === 'O')){
+            setResult(result); //setResult("O")
+            console.log(setResult(result))
+          } else if (items.every((cell) => cell === 'X')) setResult(result); //setResult("X")
         });
         checkDraw();
       };
       //verificar empate
       const checkDraw = () => {
         if (board.every((item) => item === '')) {
-          setResult(null); //setResult("E")
+          setResult(result); //setResult("E")
         }
       };
       //check result
